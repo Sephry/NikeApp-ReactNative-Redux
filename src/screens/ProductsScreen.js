@@ -1,15 +1,28 @@
 import React from "react";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import products from "../data/products";
+import { useNavigation } from "@react-navigation/native";
 
-const ProductsScreen = () => {
+const ProductsScreen = ({ navigation }) => {
+  // const navigation = useNavigation();
   return (
     <FlatList
       data={products}
       renderItem={({ item }) => (
-        <View style={styles.itemContainer}>
+        <Pressable
+          onPress={() => navigation.navigate("Products Details")}
+          style={styles.itemContainer}
+        >
           <Image source={{ uri: item.image }} style={styles.image} />
-        </View>
+          <Text style={{ fontSize: 16, fontWeight: "400" }}>{item.name}</Text>
+        </Pressable>
       )}
       numColumns={2}
     />
@@ -22,6 +35,10 @@ const styles = StyleSheet.create({
   itemContainer: {
     width: "50%",
     padding: 1,
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   image: {
     width: "100%",
