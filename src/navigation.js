@@ -33,7 +33,7 @@ const Navigation = () => {
         <Stack.Screen
           name="Products Details"
           component={ProductDetailsScreen}
-          options={{ presentation: "modal" }}
+          options={{ presentation: "fullScreenModal" }}
         />
         <Stack.Screen name="Cart" component={ShoppingCart} />
       </Stack.Navigator>
